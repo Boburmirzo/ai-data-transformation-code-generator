@@ -1,4 +1,4 @@
-# Data Transformation Code Generator
+# AI Data Transformation Code Generator
 This Streamlit app, powered by Toolhouse AI and OpenAI's LLM, generates Python code to transform data from one JSON format to another. It provides a description of the transformation function and verifies its correctness through automated unit testing.
 
 # Features
