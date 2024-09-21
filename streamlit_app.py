@@ -52,15 +52,17 @@ def generate_code(description: str, input_json: str, output_json: str):
     ]
     with st.status("Generating code..", expanded=True) as status:
         st.write("Please wait while we generate the code..")
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=messages,
-        # Passes Code Execution as a tool
-        tools=th.get_tools(bundle="data-transformation-code-generator"),
-    )
+        response = client.chat.completions.create(
+            model=MODEL,
+            messages=messages,
+            # Passes Code Execution as a tool
+            tools=th.get_tools(bundle="data-transformation-code-generator"),
+        )
 
-    code_content = response.choices[0].message.content
-    st.code(code_content, language="markdown")
+        code_content = response.choices[0].message.content
+        print(code_content)
+        st.code(code_content, language="markdown")
+        status.update(label="Code is generated", state="complete")
 
     return response, messages
 
